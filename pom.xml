@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>src.SDRaytracer</name>
+    <name>SDRaytracer</name>
     <groupId>cataract92.SDRaytracer</groupId>
     <artifactId>SDRaytracer</artifactId>
     <version>0.1</version>
@@ -25,7 +25,7 @@
     <build>
         <!-- configure source and test directories-->
         <sourceDirectory>src</sourceDirectory>
-        <!--<testSourceDirectory>tests</testSourceDirectory>-->
+        <!-- <testSourceDirectory>tests</testSourceDirectory> -->
 
         <!-- configure maven plugins -->
         <plugins>
@@ -45,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.unitrier.st.fst17.list.Main</mainClass>
+                            <mainClass>src.SDRaytracer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
