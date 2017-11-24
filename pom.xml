@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>SDRaytracer</name>
+    <name>de.unitrier.st.fst17.sdraytracer.SDRaytracer</name>
     <groupId>cataract92.SDRaytracer</groupId>
     <artifactId>SDRaytracer</artifactId>
     <version>0.1</version>
@@ -45,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>src.SDRaytracer</mainClass>
+                            <mainClass>de.unitrier.st.fst17.sdraytracer.SDRaytracer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
