@@ -9,7 +9,7 @@ public class Vec3D {
         z = zz;
     }
 
-    Vec3D(float xx, float yy, float zz, float ww) {
+    public Vec3D(float xx, float yy, float zz, float ww) {
         x = xx;
         y = yy;
         z = zz;

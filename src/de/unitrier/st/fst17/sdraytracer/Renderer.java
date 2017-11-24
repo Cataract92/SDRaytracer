@@ -20,9 +20,14 @@ public class Renderer {
     private double tan_fovx;
     private double tan_fovy;
 
+    private int y_angle_factor = 4;
+    private int x_angle_factor = -4;
+
     private Future[] futureList;
     private int nrOfProcessors = Runtime.getRuntime().availableProcessors();
     private ExecutorService eservice = Executors.newFixedThreadPool(nrOfProcessors);
+
+    private RGB[][] image;
 
     Renderer(SDRaytracer rayTracer, int maxRec, float fovx, float fovy) {
         this.rayTracer = rayTracer;
@@ -31,6 +36,8 @@ public class Renderer {
         this.fovy = fovy;
 
         futureList = new Future[rayTracer.getWidth()];
+
+        image = new RGB[rayTracer.getWidth()][rayTracer.getHeight()];
     }
 
     void profileRenderImage() {
@@ -66,7 +73,7 @@ public class Renderer {
             try {
                 RGB[] col = (RGB[]) futureList[i].get();
                 for (int j = 0; j < rayTracer.getHeight(); j++)
-                    rayTracer.getImage()[i][j] = col[j];
+                    image[i][j] = col[j];
             } catch (InterruptedException | ExecutionException e) {
             }
         }
@@ -98,5 +105,25 @@ public class Renderer {
 
     public int getRayPerPixel() {
         return rayPerPixel;
+    }
+
+    public RGB[][] getImage() {
+        return image;
+    }
+
+    public int getY_angle_factor() {
+        return y_angle_factor;
+    }
+
+    public void setY_angle_factor(int y_angle_factor) {
+        this.y_angle_factor = y_angle_factor;
+    }
+
+    public int getX_angle_factor() {
+        return x_angle_factor;
+    }
+
+    public void setX_angle_factor(int x_angle_factor) {
+        this.x_angle_factor = x_angle_factor;
     }
 }

@@ -27,11 +27,6 @@ public class SDRaytracer extends JFrame {
     private AScene scene;
     private Renderer renderer;
 
-    private RGB[][] image = new RGB[width][height];
-
-    private int y_angle_factor = 4;
-    private int x_angle_factor = -4;
-
     public static void main(String argv[]) {
         long start = System.currentTimeMillis();
         SDRaytracer sdr = new SDRaytracer();
@@ -58,11 +53,11 @@ public class SDRaytracer extends JFrame {
         contentPane.setLayout(new BorderLayout());
         JPanel area = new JPanel() {
             public void paint(Graphics g) {
-                System.out.println("fovx=" + renderer.getFovx() + ", fovy=" + renderer.getFovy() + ", xangle=" + x_angle_factor + ", yangle=" + y_angle_factor);
-                if (image == null) return;
+                System.out.println("fovx=" + renderer.getFovx() + ", fovy=" + renderer.getFovy() + ", xangle=" + renderer.getX_angle_factor() + ", yangle=" + renderer.getY_angle_factor());
+                if (renderer.getImage() == null) return;
                 for (int i = 0; i < width; i++)
                     for (int j = 0; j < height; j++) {
-                        g.setColor(image[i][j].color());
+                        g.setColor(renderer.getImage()[i][j].color());
                         // zeichne einzelnen Pixel
                         g.drawLine(i, height - j, i, height - j);
                     }
@@ -73,7 +68,7 @@ public class SDRaytracer extends JFrame {
             public void keyPressed(KeyEvent e) {
                 boolean redraw = false;
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    x_angle_factor--;
+                    renderer.setX_angle_factor(renderer.getX_angle_factor()-1);
                     //mainLight.position.y-=10;
                     //fovx=fovx+0.1f;
                     //fovy=fovx;
@@ -81,7 +76,7 @@ public class SDRaytracer extends JFrame {
                     redraw = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    x_angle_factor++;
+                    renderer.setX_angle_factor(renderer.getX_angle_factor()+1);
                     //mainLight.position.y+=10;
                     //fovx=fovx-0.1f;
                     //fovy=fovx;
@@ -89,7 +84,7 @@ public class SDRaytracer extends JFrame {
                     redraw = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    y_angle_factor--;
+                    renderer.setY_angle_factor(renderer.getY_angle_factor()-1);
                     //mainLight.position.x-=10;
                     //startX-=10;
                     //fovx=fovx+0.1f;
@@ -97,7 +92,7 @@ public class SDRaytracer extends JFrame {
                     redraw = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    y_angle_factor++;
+                    renderer.setY_angle_factor(renderer.getY_angle_factor()+1);
                     //mainLight.position.x+=10;
                     //startX+=10;
                     //fovx=fovx-0.1f;
@@ -118,20 +113,8 @@ public class SDRaytracer extends JFrame {
         this.setVisible(true);
     }
 
-    public RGB[][] getImage() {
-        return image;
-    }
-
     public AScene getScene() {
         return scene;
-    }
-
-    public int getY_angle_factor() {
-        return y_angle_factor;
-    }
-
-    public int getX_angle_factor() {
-        return x_angle_factor;
     }
 
     @Override

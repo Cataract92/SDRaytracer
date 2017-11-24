@@ -35,8 +35,8 @@ public class Scene1 extends AScene {
         Triangle.addCube(triangles, 50, -20, -40, 10, 80, 100, new RGB(.5f, .5f, .5f), 0.2f);
         Triangle.addCube(triangles, -70, -26, -40, 130, 3, 40, new RGB(.5f, .5f, .5f), 0.2f);
 
-        Matrix mRx = Matrix.createXRotation((float) (rayTracer.getX_angle_factor() * Math.PI / 16));
-        Matrix mRy = Matrix.createYRotation((float) (rayTracer.getY_angle_factor() * Math.PI / 16));
+        Matrix mRx = Matrix.createXRotation((float) (rayTracer.getRenderer().getX_angle_factor() * Math.PI / 16));
+        Matrix mRy = Matrix.createYRotation((float) (rayTracer.getRenderer().getY_angle_factor() * Math.PI / 16));
         Matrix mT = Matrix.createTranslation(0, 0, 200);
         Matrix m = mT.mult(mRx).mult(mRy);
         System.out.println(m);

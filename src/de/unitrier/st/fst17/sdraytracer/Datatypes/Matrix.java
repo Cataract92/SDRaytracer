@@ -35,7 +35,7 @@ public class Matrix {
         return r;
     }
 
-    Vec3D mult(Vec3D v) {
+    public Vec3D mult(Vec3D v) {
         Vec3D temp = new Vec3D(val[0][0] * v.x + val[0][1] * v.y + val[0][2] * v.z + val[0][3] * v.w,
                 val[1][0] * v.x + val[1][1] * v.y + val[1][2] * v.z + val[1][3] * v.w,
                 val[2][0] * v.x + val[2][1] * v.y + val[2][2] * v.z + val[2][3] * v.w,

@@ -8,15 +8,15 @@ public class Ray {
     private Vec3D start = new Vec3D(0, 0, 0);
     private Vec3D dir = new Vec3D(0, 0, 0);
 
-    public void setStart(Vec3D start) {
+    void setStart(Vec3D start) {
         this.start = start;
     }
 
-    public void setDir(float dx, float dy, float dz) {
+    void setDir(float dx, float dy, float dz) {
         dir = new Vec3D(dx, dy, dz);
     }
 
-    public void normalize() {
+    void normalize() {
         dir.normalize();
     }
 
@@ -86,7 +86,7 @@ public class Ray {
         return (color);
     }
 
-    public RGB rayTrace(int rec, SDRaytracer rayTracer) {
+    RGB rayTrace(int rec, SDRaytracer rayTracer) {
         if (rec > rayTracer.getRenderer().getMaxRec()) return RGB.BLACK;
         IPoint ip = hitObject(rayTracer.getScene().triangles);  // (ray, p, n, triangle);
         if (ip.dist > IPoint.epsilon)
